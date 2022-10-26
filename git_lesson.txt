@@ -1,4 +1,4 @@
-﻿- git ini (깃 저장소만들기-숨김폴더로 생성됨) -
+﻿Gi- git ini (깃 저장소만들기-숨김폴더로 생성됨) -
 
 폴더를 만든 후 그 폴더로 이동 후 gitinit 실행
 mkdir firstgitrepo
@@ -38,3 +38,80 @@ Date:   Fri Oct 7 16:31:19 2022 +0900
 
     메시지 내용
 ----------------------------------------------------
+
+- GitHub 원격저장소와 로컬 저장소 연결 -
+1. GitHub 접속 후 로컬 저장소 폴더명과 같은 repository를 생성
+2. 로컬 저장소 폴더로 이동후
+$ git remote add origin http://github.com/gkdudtns/firstgitrepo.git
+
+3. 연결확인
+$ git remote -v
+--------------------------------------------------------------------------
+origin  https://github.com/gkdudtns/firstgitrepo.git (fetch)
+origin  https://github.com/gkdudtns/firstgitrepo.git (push)
+--------------------------------------------------------------------------
+
+4. GitHub 원격저장소에 변경 내역반영
+$ git push origin master
+
+  window에서 GitHub 패스워드 입력창 뜨고, 패스워드 입력하면
+-----------------------------------------------------------------git
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (9/9), 1.57 KiB | 267.00 KiB/s, done.
+Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/gkdudtns/firstgitrepo.git
+ * [new branch]      master -> master
+-----------------------------------------------------------------------
+
+5. GitHub 창을 리플래쉬 하면 변경이 반영됨을 볼 수있음
+
+
+### Git 기본명령어 알아보기 Clone, pull, revert, branch, checkout ###
+1. Clone
+복사받을 디렉토리(newuser)를 만들고 Git Bash에서 디렉토리로 이동 후
+$ git clone https://github.com/gkdudtns/firstgitrepo.gi
+실행 후 폴더 확인하면 원격저장소가 폴더(firstgitrepo)로 복사되었음을 확인할 수 있음
+
+2. pull
+원격저장소 내역을 로컬 저장소에 반영
+
+해당 폴더로 이동 후
+$ git pull origin master
+
+3. revert
+잘못 commit한 내역을 이전으로 되돌림
+$ git revert "되돌리고 싶은 commit hash"
+   commit hash를 확인하고 싶을때 $ git log
+
+4. branch
+현재 branch 현황 보기
+$ git branch
+-------------------------------------
+$ git branch
+* master
+-------------------------------------
+
+새로운 branch 생성
+$ git branch developer2   (git branch 새branch명)
+-------------------------------------
+$ git branch
+  developer2
+* master
+----------------------------------------------
+
+5. checkout
+다른 branch로 이동
+-------------------------------------
+$ git checkout developer2
+Switched to branch 'developer2'
+
+$ git branch
+* developer2
+  master
+---------------------------------------
+
+6. branch 삭제
+$ git branch -D developer2
